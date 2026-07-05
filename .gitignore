@@ -1,0 +1,71 @@
+# Environment variables - NEVER commit these
+.env
+*.env
+.env.*
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.pyc
+.pytest_cache/
+.mypy_cache/
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# Docker
+.docker/
+
+# Database
+*.db
+*.sqlite3
+postgres_data/
+
+# Node / React (for later)
+node_modules/
+dist/
+build/
+.next/
+frontend/.env
+frontend/.env.local
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ML artifacts (large files)
+*.pkl
+*.joblib
+*.h5
+*.pt
+*.pth
+uploads/
+backend/ml/models/
+**/app/models/*.pkl
+
+# Logs
+*.log
+logs/
+
+# Jupyter
+.ipynb_checkpoints/
+
+docs/
+CLAUDE.md
+IMPROVEMENTS.md
+prompt.txt
+
+# strip-and-document generated files
+# Auto-generated documentation — do not commit
+**/*.md
+!README.md
