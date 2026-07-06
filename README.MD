@@ -8,9 +8,9 @@ Upload a dataset, let the backend train and compare models, inspect the results,
 
 ## Live Links
 
-- Frontend: https://ml-foundry.vercel.app
-- Backend API: https://mlfoundry-1.onrender.com
-- API docs: https://mlfoundry-1.onrender.com/docs
+- Frontend: https://autolab.vercel.app
+- Backend API: https://autolab.onrender.com
+- API docs: https://autolab.onrender.com/docs
 
 
 ---
