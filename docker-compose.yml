@@ -1,0 +1,54 @@
+services:
+  backend:
+    build: ./backend
+    container_name: omniml_backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+      - uploads_data:/app/uploads
+      - models_data:/app/models
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - db
+      - redis
+      - celery_worker
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+  celery_worker:
+    build: ./backend
+    container_name: omniml_celery
+    volumes:
+      - ./backend:/app
+      - uploads_data:/app/uploads
+      - models_data:/app/models
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - db
+      - redis
+    command: celery -A app.workers.celery_app worker --loglevel=info --concurrency=2
+
+  db:
+    image: postgres:15
+    container_name: omniml_db
+    environment:
+      POSTGRES_USER: omniml_user
+      POSTGRES_PASSWORD: omniml_pass
+      POSTGRES_DB: omniml_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    container_name: omniml_redis
+    ports:
+      - "6379:6379"
+
+volumes:
+  postgres_data:
+  uploads_data:
+  models_data:
